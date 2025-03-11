@@ -1,3 +1,5 @@
+//essential information about a tile in the game like position and Id
+
 public readonly struct TileData
 {
     public readonly int X;

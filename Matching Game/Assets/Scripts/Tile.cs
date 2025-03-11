@@ -1,25 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-   public sealed class Tile : MonoBehaviour
+//Represents an individual tile, including its position, type, and UI elements
+public sealed class Tile : MonoBehaviour
+{
+    public int x;
+    public int y;
+
+    public Image icon;
+
+    public Button button;
+
+    private TileTypeAsset _type;
+
+    public TileTypeAsset Type
     {
-        public int x;
-        public int y;
-        public Image icon; // Assign this in Unity
-        public Button button;
-
-        private TileTypeAsset _type;
-
-        public TileTypeAsset Type
+        get => _type;  
+        set
         {
-            get => _type;
-            set
-            {
-                if (_type == value) return;
-                _type = value;
-                icon.sprite = _type.sprite; // Assign correct image
-            }
-        }
+            if (_type == value) return;
 
-        public TileData Data => new TileData(x, y, _type.id);
+            _type = value;
+            icon.sprite = _type.sprite; 
+        }
     }
+
+    public TileData Data => new TileData(x, y, _type.id);
+}

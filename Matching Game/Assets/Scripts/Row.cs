@@ -4,22 +4,23 @@
     {
         [HideInInspector] public Tile[] tiles;
 
-        public void InitializeRow(int width, GameObject tilePrefab, Transform parent)
+    // Initializes the row with the specified number of tiles and assigns them to this row.
+    public void InitializeRow(int width, GameObject tilePrefab, Transform parent)
         {
-            // 🛑 FIX: Ensure no pre-existing tiles before creating new ones
-            foreach (Transform child in parent)
+           // Clean up 
+           foreach (Transform child in parent)
             {
-                Destroy(child.gameObject); // Remove extra duplicate tiles
+                Destroy(child.gameObject); 
             }
 
             tiles = new Tile[width];
-
-            for (int x = 0; x < width; x++)
+        // Create and place each tile in the row
+        for (int x = 0; x < width; x++)
             {
-                GameObject tileObj = Instantiate(tilePrefab, parent); // 👈 Spawning tiles properly
+                GameObject tileObj = Instantiate(tilePrefab, parent); 
                 Tile tile = tileObj.GetComponent<Tile>();
                 tile.x = x;
-                tile.y = transform.GetSiblingIndex(); // Set row index
+                tile.y = transform.GetSiblingIndex(); 
                 tiles[x] = tile;
             }
         }
