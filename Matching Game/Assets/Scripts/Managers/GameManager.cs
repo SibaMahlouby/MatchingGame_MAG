@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
 
         loadingScreen.SetProgress(100);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         loadingScreen.gameObject.SetActive(false);
     }
 }
