@@ -3693,7 +3693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundIDClipPairs:
   - SoundID: 1
-    AudioClip: {fileID: 8300000, guid: 63a4bce8355f76e43b10d0f89e2e55a8, type: 3}
+    AudioClip: {fileID: 8300000, guid: 70da2d877515d9741b99e5a22843c278, type: 3}
   - SoundID: 2
     AudioClip: {fileID: 8300000, guid: e04da69dd7af7954e9417259484f2d6b, type: 3}
   - SoundID: 3

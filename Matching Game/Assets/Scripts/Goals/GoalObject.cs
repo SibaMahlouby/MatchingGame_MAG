@@ -10,7 +10,6 @@ public class GoalObject : MonoBehaviour
     [SerializeField] private Image goalImage;
     [SerializeField] private Image completedMarkImage;
     [SerializeField] private TextMeshProUGUI goalCountText;
-    [SerializeField] private ParticleSystem completionEffect;
 
     private int goalCount;
     private LevelGoal levelGoal;
@@ -42,7 +41,6 @@ public class GoalObject : MonoBehaviour
         }
 
         UpdateGoalCountText();
-        PlayDecreaseEffect();
     }
 
     private void UpdateGoalCountText()
@@ -57,10 +55,7 @@ public class GoalObject : MonoBehaviour
         completedMarkImage.gameObject.SetActive(true);
     }
 
-    private void PlayDecreaseEffect()
-    {
-        completionEffect.Play();
-    }
+    
 
     public bool IsCompleted()
     {
