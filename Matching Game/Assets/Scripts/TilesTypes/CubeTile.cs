@@ -34,42 +34,7 @@ public class CubeTile : Tiles
     {
         return matchType;
     }
-    public override void HintUpdateToSprite(TileType tileType)
-    {
-        var imageLibrary = TilesImageLibrary.Instance;
-
-        switch (tileType)
-        {
-            case TileType.TNT:
-                UpdateColorfulBombSprite(imageLibrary);
-                break;
-            default:
-                UpdateSprite(GetSpritesForMatchType());
-                break;
-        }
-    }
-    private void UpdateColorfulBombSprite(TilesImageLibrary imageLibrary)
-    {
-        Sprite newSprite;
-        switch (matchType)
-        {
-            case MatchType.Green:
-                newSprite = imageLibrary.GreenCubeBombHintSprite;
-                break;
-            case MatchType.Yellow:
-                newSprite = imageLibrary.YellowCubeBombHintSprite;
-                break;
-            case MatchType.Blue:
-                newSprite = imageLibrary.BlueCubeBombHintSprite;
-                break;
-            case MatchType.Red:
-                newSprite = imageLibrary.RedCubeBombHintSprite;
-                break;
-            default:
-                return;
-        }
-        UpdateSprite(newSprite);
-    }
+   
 
     public override void TryExecute()
     {

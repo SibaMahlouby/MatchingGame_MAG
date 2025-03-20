@@ -18,7 +18,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject levelFailedPanel;
     [SerializeField] private Button retryButton;
 
-    //[SerializeField] private Image characterImage;
 
     private void OnEnable()
     {
@@ -44,13 +43,11 @@ public class UIManager : Singleton<UIManager>
         levelCompletedPanel.SetActive(true);
         nextButton.onClick.RemoveAllListeners();
 
-        // Happens when the game is loaded from the LevelScene directly
         if (GameManager.Instance == null)
-            throw new System.Exception("ILLEGAL STATE: Please load the game from MainScene.");
+            throw new System.Exception("Load the game from MainScene.");
 
         nextButton.onClick.AddListener(() => GameManager.Instance.NextLevel());
-       // characterImage.transform.DOScale(1.5f, 1f);
-        //characterImage.transform.DORotate(new Vector3(0f, 0f, 360f), 1f, RotateMode.FastBeyond360);
+
     }
 
     public void SetLostPanel()
@@ -58,9 +55,8 @@ public class UIManager : Singleton<UIManager>
         levelNumberTextFailed.text = "Level " + PlayerPrefs.GetInt("Level", 1);
         levelFailedPanel.SetActive(true);
 
-        // Happens when the game is loaded from the LevelScene directly
         if (GameManager.Instance == null)
-            throw new System.Exception("ILLEGAL STATE: Please load the game from MainScene.");
+            throw new System.Exception("Load the game from MainScene.");
 
         retryButton.onClick.RemoveAllListeners();
         retryButton.onClick.AddListener(() => GameManager.Instance.LoadLevelScene());

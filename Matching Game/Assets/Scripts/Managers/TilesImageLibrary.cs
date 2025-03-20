@@ -6,17 +6,9 @@ public class TilesImageLibrary : Singleton<TilesImageLibrary>
 {
     [Header("Cubes")]
     public Sprite GreenCubeSprite;
-    public Sprite GreenCubeBombHintSprite;
-
     public Sprite YellowCubeSprite;
-    public Sprite YellowCubeBombHintSprite;
-
     public Sprite BlueCubeSprite;
-    public Sprite BlueCubeBombHintSprite;
-
     public Sprite RedCubeSprite;
-    public Sprite RedCubeBombHintSprite;
-
     [Header("Obstacles")]
     public Sprite BoxSprite;
 
