@@ -1,10 +1,8 @@
+//Manages user touch inputs for both mobile and editor mouse interactions.
+//Handles cell taps and performs actions when a cell is tapped.
+
 using UnityEngine;
 
-/// <summary>
-/// 
-/// TouchManager is a MonoBehaviour that listens to the OnMovesFinished and OnGoalsCompleted events from MovesManager and GoalManager.
-/// 
-/// </summary>
 public class TouchManager : MonoBehaviour
 {
     private const string cellCollider = "CellCollider";
@@ -20,6 +18,8 @@ public class TouchManager : MonoBehaviour
             GetTouchMobile();
         #endif
     }
+
+    //Handles touch input when running in the Unity Editor
     private void GetTouchEditor()
     {
         if (Input.GetMouseButtonUp(0))
@@ -28,6 +28,8 @@ public class TouchManager : MonoBehaviour
         }
     }
 
+
+    //Handles touch input on mobile devices.
     private void GetTouchMobile()
     {
         var touch = Input.GetTouch(0);
@@ -41,6 +43,7 @@ public class TouchManager : MonoBehaviour
         }
     }
 
+    //Executes touch logic by converting screen position to world position and checking for tapped cells.
     private void ExecuteTouch(Vector3 pos)
     {
         var hit = Physics2D.OverlapPoint(camera.ScreenToWorldPoint(pos)) as BoxCollider2D;
@@ -49,6 +52,8 @@ public class TouchManager : MonoBehaviour
             hit.GetComponent<Cell>().CellTapped();
         }
     }
+
+    
     private void DisableTouch()
     {
         this.enabled = false;

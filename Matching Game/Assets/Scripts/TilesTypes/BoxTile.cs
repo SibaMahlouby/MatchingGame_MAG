@@ -19,9 +19,8 @@ public class BoxTile : Tiles
 
     public override void TryExecute()
     {
-        //ParticleManager.Instance.PlayParticle(this);
         AudioManager.Instance.PlayEffect(SoundID);
-        ScoreManager.Instance.IncreaseScore(10); // Increase score by 10
+        ScoreManager.Instance.IncreaseScore(10); 
         base.TryExecute();
     }
 }

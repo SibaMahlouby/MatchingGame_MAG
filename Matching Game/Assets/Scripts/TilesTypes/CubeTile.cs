@@ -38,7 +38,7 @@ public class CubeTile : Tiles
 
     public override void TryExecute()
     {
-        ScoreManager.Instance.IncreaseScore(5); // Increase score by 10
+        ScoreManager.Instance.IncreaseScore(5); 
         AudioManager.Instance.PlayEffect(SoundID);
         base.TryExecute();
     }

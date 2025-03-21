@@ -1,4 +1,4 @@
-//it listens to the OnGoalsCompleted event from GoalManager.
+//Listens to the OnGoalsCompleted event from GoalManager and triggers level completion UI.
 using UnityEngine;
 
 public class LevelCompletion : MonoBehaviour
@@ -7,16 +7,27 @@ public class LevelCompletion : MonoBehaviour
 
     private void OnEnable()
     {
-        GoalManager.Instance.OnGoalsCompleted += HandleGoalsCompleted;
+        if (GoalManager.Instance != null)
+        {
+
+            GoalManager.Instance.OnGoalsCompleted += HandleGoalsCompleted;
+        }
     }
 
     private void OnDisable()
     {
-        GoalManager.Instance.OnGoalsCompleted -= HandleGoalsCompleted;
+        if (GoalManager.Instance != null)
+        {
+
+            GoalManager.Instance.OnGoalsCompleted -= HandleGoalsCompleted;
+        }
     }
 
     private void HandleGoalsCompleted()
     {
-        UIManager.Instance.SetLevelCompletedPanel();
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.SetLevelCompletedPanel();
+        }
     }
 }

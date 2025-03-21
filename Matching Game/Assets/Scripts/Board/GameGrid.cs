@@ -1,26 +1,28 @@
+//Responsible for creating and managing the grid of cells
+
 using UnityEngine;
 
 public class GameGrid : MonoBehaviour
 {
-    public Transform cellsParent;
-    public Transform tilesParent;
-    public Transform particlesParent;
-    [SerializeField] private Cell cellPrefab;
+    public Transform cellsParent; 
+    public Transform tilesParent; 
+    [SerializeField] private Cell cellPrefab; // Prefab for creating cells.
 
-    public LevelInfo levelInfo;
+    public LevelInfo levelInfo; // Data for the current level.
 
-    public int Rows { get; private set; }
-    public int Cols { get; private set; }
+    public int Rows { get; private set; } 
+    public int Cols { get; private set; } 
 
-    public Cell[,] Cells { get; private set; }
+    public Cell[,] Cells { get; private set; } 
 
     private void Awake()
     {
-        LoadLevelInfo();
-        InitializeCells();
-        PrepareCells();
+        LoadLevelInfo(); 
+        InitializeCells(); 
+        PrepareCells(); 
     }
 
+    // Loads level data
     private void LoadLevelInfo()
     {
         int currentLevel = PlayerPrefs.GetInt("Level", 1);
@@ -30,17 +32,18 @@ public class GameGrid : MonoBehaviour
         Cols = levelInfo.grid_width;
     }
 
+    // Initializes the grid by creating and positioning cells.
     private void InitializeCells()
     {
         Cells = new Cell[Cols, Rows];
-        ResizeBoard(Rows, Cols);
-        CreateCells();
+        ResizeBoard(Rows, Cols); 
+        CreateCells(); 
     }
 
+    // Creates and positions cells in the grid.
     private void CreateCells()
     {
-        // Calculate the center offset
-        float cellSize = 1.0f; // Assuming each cell is 1 unit in size
+        float cellSize = 1.0f; 
         float gridWidth = Cols * cellSize;
         float gridHeight = Rows * cellSize;
         Vector3 centerOffset = new Vector3(-gridWidth / 2 + cellSize / 2, gridHeight / 2 - cellSize / 2, 0);
@@ -55,6 +58,7 @@ public class GameGrid : MonoBehaviour
         }
     }
 
+    // Prepares each cell with its position and grid reference.
     private void PrepareCells()
     {
         for (int y = 0; y < Rows; y++)
@@ -62,6 +66,7 @@ public class GameGrid : MonoBehaviour
                 Cells[x, y].Prepare(x, y, this);
     }
 
+    // Adjusts the board's position to center it based on grid size.
     private void ResizeBoard(int rows, int cols)
     {
         Transform currTrans = this.transform;

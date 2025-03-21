@@ -1,3 +1,4 @@
+//This is the base to create special combos’ effects (TNTs) it is not yet completed
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class ComboManager : Singleton<ComboManager>
 {
-   // private Dictionary<ComboType, ComboEffect> comboEffects;
     private List<Cell> matchedCells;
 
     protected override void Awake()

@@ -1,8 +1,8 @@
-//Information and methods for single cell.
+// Information and methods for a single cell in the grid.
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Cell : MonoBehaviour
 {
@@ -21,12 +21,10 @@ public class Cell : MonoBehaviour
 
     public GameGrid gameGrid { get; private set; }
 
+    // Manages the tile in this cell and ensures proper references.
     public Tiles tile
     {
-        get
-        {
-            return _tile;
-        }
+        get { return _tile; }
         set
         {
             if (_tile == value) return;
@@ -42,6 +40,7 @@ public class Cell : MonoBehaviour
         }
     }
 
+    // Initializes the cell with its position and grid reference.
     public void Prepare(int x, int y, GameGrid board)
     {
         gameGrid = board;
@@ -55,6 +54,7 @@ public class Cell : MonoBehaviour
         UpdateAllArea();
     }
 
+    // Updates the cell's label with its coordinates.
     private void UpdateLabel()
     {
         var cellName = X + " " + Y;
@@ -62,12 +62,14 @@ public class Cell : MonoBehaviour
         gameObject.name = "Cell " + cellName;
     }
 
+    // Updates the list of direct neighbors and the cell below.
     private void UpdateNeighbours()
     {
         neighbours = GetNeighbours(Direction.Up, Direction.Down, Direction.Left, Direction.Right);
         firstCellBelow = GetNeighbourWithDirection(Direction.Down);
     }
 
+    // Returns a list of neighbors in the specified directions.
     private List<Cell> GetNeighbours(params Direction[] directions)
     {
         var neighbours = new List<Cell>();
@@ -84,6 +86,7 @@ public class Cell : MonoBehaviour
         return neighbours;
     }
 
+    // Returns the neighbor in the specified direction.
     private Cell GetNeighbourWithDirection(Direction direction)
     {
         var x = X;
@@ -107,11 +110,13 @@ public class Cell : MonoBehaviour
         return gameGrid.Cells[x, y];
     }
 
+    // Updates the list of all surrounding cells (including diagonals).
     public void UpdateAllArea()
     {
         allArea = GetNeighbours(Direction.Up, Direction.UpRight, Direction.Right, Direction.DownRight, Direction.Down, Direction.DownLeft, Direction.Left, Direction.UpLeft);
     }
 
+    // Handles player taps on the cell.
     public void CellTapped()
     {
         if (tile == null) return;
@@ -119,6 +124,7 @@ public class Cell : MonoBehaviour
         SpecialTapSwitcher();
     }
 
+    // Switches behavior based on the tile's match type.
     private void SpecialTapSwitcher()
     {
         switch (tile.GetMatchType())
@@ -132,6 +138,7 @@ public class Cell : MonoBehaviour
         }
     }
 
+    // Returns the target cell for falling tiles.
     public Cell GetFallTarget()
     {
         var targetCell = this;

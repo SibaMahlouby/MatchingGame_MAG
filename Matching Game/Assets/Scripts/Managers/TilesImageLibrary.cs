@@ -16,7 +16,7 @@ public class TilesImageLibrary : Singleton<TilesImageLibrary>
     [Header("TNT")]
     public Sprite TNTSprite;
 
-
+    //Retrieves the sprite for a given tile type.
     public Sprite GetSpriteForTileType(TileType tileType)
     {
         switch (tileType)

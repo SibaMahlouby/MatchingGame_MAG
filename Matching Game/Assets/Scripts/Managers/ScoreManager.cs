@@ -1,20 +1,21 @@
+// Manages the player's score, updates the score UI, and allows resetting the score.
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
-    [SerializeField] private TextMeshProUGUI scoreText; // Reference to the UI Text element displaying the score
-    private int currentScore = 0; // Current score
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int currentScore = 0;
 
     protected override void Awake()
     {
         base.Awake();
-        UpdateScoreText(); // Initialize the score text
+        UpdateScoreText(); 
     }
 
 
-    // Increase the score by 5 for each popped tile
+    // Increase the score for each popped tile
     public void IncreaseScore(int score)
     {
         currentScore += score;

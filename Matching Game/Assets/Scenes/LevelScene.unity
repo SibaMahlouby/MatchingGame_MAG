@@ -164,7 +164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 686447204c01c2c4f9b7407d801de63f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 70da2d877515d9741b99e5a22843c278, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -894,13 +894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GreenCubeSprite: {fileID: 21300000, guid: 2916d4cc187e08b488759b06772ced44, type: 3}
-  GreenCubeBombHintSprite: {fileID: 21300000, guid: 6f54d7548659c40e582cc1517c1d5de7, type: 3}
   YellowCubeSprite: {fileID: 21300000, guid: 7a91b68b281018041a45722132451922, type: 3}
-  YellowCubeBombHintSprite: {fileID: 21300000, guid: 9a343d46bdb6e466a9c48db63dd5527c, type: 3}
   BlueCubeSprite: {fileID: 21300000, guid: 9d1035278f655c74a873e3232fc265c8, type: 3}
-  BlueCubeBombHintSprite: {fileID: 21300000, guid: 6f648811f77cb439da1f2d62a4f4bf35, type: 3}
   RedCubeSprite: {fileID: 21300000, guid: 1517b1ced00c35545b759ba6f2527fcb, type: 3}
-  RedCubeBombHintSprite: {fileID: 21300000, guid: c9eaf8cbc84e54fdb91c79afeea688a1, type: 3}
   BoxSprite: {fileID: 21300000, guid: de0bcdf915a674bb792b1afe8869df57, type: 3}
   TNTSprite: {fileID: 21300000, guid: 6c5e1933b9a1ef84380975e2e2c0226d, type: 3}
 --- !u!114 &273410176
@@ -2777,7 +2773,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellsParent: {fileID: 2131089975}
   tilesParent: {fileID: 389117484}
-  particlesParent: {fileID: 0}
   cellPrefab: {fileID: 8934436280902751749, guid: 352c1619152ff3c4bab83b11d40c2aa3, type: 3}
   levelInfo:
     level_number: 0
@@ -2951,7 +2946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fabecaf83d7404888dc13abce3fe9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameGrid: {fileID: 1144798757}
 --- !u!212 &1300821445
 SpriteRenderer:
   m_ObjectHideFlags: 0

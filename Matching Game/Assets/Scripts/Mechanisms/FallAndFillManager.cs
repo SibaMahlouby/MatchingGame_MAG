@@ -1,3 +1,5 @@
+//Responsible for managing the "falling" and "filling" mechanics of the game.
+
 using System.Collections.Generic;
 
 public class FallAndFillManager : Singleton<FallAndFillManager>
@@ -6,6 +8,9 @@ public class FallAndFillManager : Singleton<FallAndFillManager>
     private GameGrid board;
     private LevelData levelData;
     private Cell[] fillingCells;
+
+    // Initialization of the FallAndFillManager with board and level data.
+
     public void Init(GameGrid board, LevelData levelData)
     {
         this.board = board;
@@ -15,6 +20,8 @@ public class FallAndFillManager : Singleton<FallAndFillManager>
         StartFall();
     }
 
+
+    //identify all the cells in the grid that need filling.
     public void FindFillingCells()
     {
         var cellList = new List<Cell>();
@@ -32,6 +39,7 @@ public class FallAndFillManager : Singleton<FallAndFillManager>
         fillingCells = cellList.ToArray();
     }
 
+    // Perform the falling mechanic for all the tiles in the grid.
     public void DoFalls()
     {
         for (int y = 0; y < board.Rows; y++)
@@ -46,6 +54,7 @@ public class FallAndFillManager : Singleton<FallAndFillManager>
         }
     }
 
+    //Fill the empty cells with new tiles.
     public void DoFills()
     {
         for (int i = 0; i < fillingCells.Length; i++)

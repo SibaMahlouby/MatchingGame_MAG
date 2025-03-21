@@ -8,6 +8,7 @@ public class TileFactory : Singleton<TileFactory>
 {
     public TileBase TileBasePrefab;
 
+    // Dictionary to map TileType to its respective creation function
     private Dictionary<TileType, Func<TileBase, Tiles>> tileCreators = new Dictionary<TileType, Func<TileBase, Tiles>>
     {
         { TileType.GreenCube, (tileBase) => CreateCubeTile(tileBase, MatchType.Green) },
@@ -18,6 +19,7 @@ public class TileFactory : Singleton<TileFactory>
         { TileType.TNT, CreateTNTTile }
     };
 
+    // Creates a tile based on the specified TileType and parent transform
     public Tiles CreateTile(TileType tileType, Transform parent)
     {
         if (tileType == TileType.None) return null;
@@ -34,6 +36,7 @@ public class TileFactory : Singleton<TileFactory>
         return createTile(tileBase);
     }
 
+    //Create a CubeTile with a specific match type
     private static Tiles CreateCubeTile(TileBase tileBase, MatchType matchType)
     {
         var cubeTile = tileBase.gameObject.AddComponent<CubeTile>();
@@ -41,12 +44,14 @@ public class TileFactory : Singleton<TileFactory>
         return cubeTile;
     }
 
+    //Create a TNTTile
     private static Tiles CreateTNTTile(TileBase tileBase)
     {
         var tntTile = tileBase.gameObject.AddComponent<TNTTile>();
         tntTile.PrepareTNTTile(tileBase);
         return tntTile;
     }
+
 
     private static Tiles CreateBoxTile(TileBase tileBase)
     {

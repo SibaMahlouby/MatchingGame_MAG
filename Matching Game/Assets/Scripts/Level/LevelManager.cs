@@ -1,4 +1,4 @@
-//Is responsible for managing the game level and creating the tiles in the grid
+//Manages the initialization and setup of the game level. This includes grid creation, tile placement, goal management, and move tracking.
 
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MovesManager movesManager;
     private LevelData levelData;
 
+    // Initializes the level by setting up tiles, goals, and move management.
     private void Start()
     {
         PrepareLevel();
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    // Loads level data and initializes the game grid with tiles.
     private void PrepareLevel()
     {
         levelData = new LevelData(gameGrid.levelInfo);
@@ -38,11 +40,13 @@ public class LevelManager : MonoBehaviour
             }
     }
 
+    //Initializes the fall and fill manager, which handles tile movement.
     private void InitFallAndFills()
     {
         FallAndFillManager.Instance.Init(gameGrid, levelData);
     }
 
+    //Loads the level information from a JSON file based on the level number.
     public static LevelInfo getLevelInfo(int level)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("Levels/level_" + level.ToString("00"));

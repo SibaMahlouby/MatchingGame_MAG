@@ -24,11 +24,13 @@ public class AudioManager : Singleton<AudioManager>
 
     private readonly Dictionary<SoundID, AudioClip> soundIDToClipMap = new Dictionary<SoundID, AudioClip>();
 
+    // Initializes the audio dictionary on startup.
     private void Start()
     {
         InitializeSoundIDToClipMap();
     }
 
+    // Populates the dictionary for quick sound lookups.
     private void InitializeSoundIDToClipMap()
     {
         foreach (var soundIDClipPair in soundIDClipPairs)
@@ -37,6 +39,7 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    // Plays background music.
     private void PlayMusic(AudioClip audioClip, bool looping = true)
     {
         if (musicSource.isPlaying) return;
@@ -46,11 +49,14 @@ public class AudioManager : Singleton<AudioManager>
         musicSource.Play();
     }
 
+    //Plays a sound effect
     private void PlayEffect(AudioClip audioClip)
     {
         effectSource.PlayOneShot(audioClip);
     }
 
+
+   // Plays a sound effect based on SoundID.
     public void PlayEffect(SoundID soundID)
     {
         if (soundID == SoundID.None) return;

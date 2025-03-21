@@ -21,6 +21,8 @@ public class Tiles : MonoBehaviour
     public ParticleSystem Particle;
     private Cell cell;
     public SoundID SoundID = SoundID.None;
+
+    // Property for accessing and setting the cell that contains this tile
     public Cell Cell
     {
         get { return cell; }
@@ -42,7 +44,7 @@ public class Tiles : MonoBehaviour
         }
     }
 
-
+    // prepare the tile with its properties and a sprite
     public void Prepare(TileBase tileBase, Sprite sprite)
     {
         SpriteRenderer = AddSprite(sprite);
@@ -56,6 +58,7 @@ public class Tiles : MonoBehaviour
         FallAnimation.tile = this;
     }
 
+    //Adds a sprite renderer to the tile and configures it
     public SpriteRenderer AddSprite(Sprite sprite)
     {
         var spriteRenderer = new GameObject("Sprite_" + childSpriteOrder).AddComponent<SpriteRenderer>();
@@ -69,13 +72,16 @@ public class Tiles : MonoBehaviour
         return spriteRenderer;
     }
 
+    //Returning the match type of the tile 
     public virtual MatchType GetMatchType() { return MatchType.None; }
+
 
     public virtual void TryExecute()
     {
         GoalManager.Instance.UpdateLevelGoal(tileType);
         RemoveTile();
     }
+
     public void RemoveTile()
     {
         Cell.tile = null;
@@ -89,10 +95,7 @@ public class Tiles : MonoBehaviour
         spriteRenderer.sprite = sprite;
     }
 
-    public virtual void HintUpdateToSprite(TileType tileType)
-    {
-        return;
-    }
+    //Handles the fall behavior of the tile if it's fallable
     public void Fall()
     {
         if (!this.IsFallable) return;
